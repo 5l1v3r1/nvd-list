@@ -1,0 +1,11 @@
+language: go
+go:
+  - "1.12"
+
+jobs:
+  include:
+    - stage: 'Update'
+      if: type = cron
+      script:
+        - git checkout master
+        - env GO111MODULE=on go build && ./nvd-list
